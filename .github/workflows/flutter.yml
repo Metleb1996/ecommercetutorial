@@ -43,7 +43,7 @@ jobs:
          channel: 'stable'
      - run: flutter config --enable-windows-desktop
      - run: flutter build windows
-     - run: dir /s /b
+     - run: winver
   build-ios:
    runs-on: macos-latest
    steps:
