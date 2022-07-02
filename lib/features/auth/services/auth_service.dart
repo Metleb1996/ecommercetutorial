@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ecommercetutorial/constants/error_handling.dart';
 import 'package:ecommercetutorial/constants/global_variables.dart';
 import 'package:ecommercetutorial/constants/utils.dart';
@@ -35,6 +37,35 @@ class AuthService {
         onSuccess: () {
           showSnackBar(context, "Account created!");
         },
+      );
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+  }
+
+  void signInUser({
+    required BuildContext context,
+    required String email,
+    required String password,
+  }) async {
+    try {
+      http.Response res = await http.post(
+        Uri.parse("$uri/api/signin"),
+        body: jsonEncode(
+          {
+            "email": email,
+            "password": password,
+          },
+        ),
+        headers: <String, String>{
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+      );
+      print(res.body);
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {},
       );
     } catch (e) {
       showSnackBar(context, e.toString());
