@@ -1,16 +1,23 @@
 'use strict';
-
 const express = require('express');
+const mongoose = require("mongoose");
 
-// Constants
+const authRouter = require("./routes/auth");
+
 const PORT = 8080;
 const HOST = '0.0.0.0';
+const DB = "mongodb://root:example@mongo:27017/";
 
-// App
 const app = express();
+app.use(express.json());
+app.use(authRouter);
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
+mongoose.connect(DB, {useNewUrlParser: true})
+.then(()=>{
+  console.log("Connection Successful");
+})
+.catch(e=>{
+  console.log(e);
 });
 
 app.listen(PORT, HOST, ()=>{
