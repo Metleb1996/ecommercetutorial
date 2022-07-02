@@ -11,7 +11,7 @@ COPY package*.json ./
 # Update npm
 # RUN npm install -g npm@8.13.1
 
-RUN npm i http express mongoose bcryptjs
+RUN npm i http express mongoose bcryptjs jsonwebtoken
 # If you are building your code for production
 # RUN npm ci --only=production
 
