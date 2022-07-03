@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ecommercetutorial/common/widgets/bottom_bar.dart';
 import 'package:ecommercetutorial/constants/error_handling.dart';
 import 'package:ecommercetutorial/constants/global_variables.dart';
 import 'package:ecommercetutorial/constants/utils.dart';
@@ -74,7 +75,7 @@ class AuthService {
           Provider.of<UserProvider>(context, listen: false).setUser(res.body);
           Navigator.pushNamedAndRemoveUntil(
             context,
-            HomeScreen.routeName,
+            BottomBar.routeName,
             (route) => false,
           );
         },
