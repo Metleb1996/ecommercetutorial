@@ -1,4 +1,5 @@
 import 'package:ecommercetutorial/constants/global_variables.dart';
+import 'package:ecommercetutorial/features/account/widgets/below_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -8,7 +9,7 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: AppBar(
           flexibleSpace: Container(
             decoration: const BoxDecoration(
@@ -47,7 +48,12 @@ class AccountScreen extends StatelessWidget {
         ),
       ),
       body: Column(
-        children: const [],
+        children: const [
+          BelowAppBar(),
+          SizedBox(
+            height: 10,
+          ),
+        ],
       ),
     );
   }
