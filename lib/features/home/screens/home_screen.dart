@@ -1,4 +1,6 @@
 import 'package:ecommercetutorial/constants/global_variables.dart';
+import 'package:ecommercetutorial/features/home/widgets/address_box.dart';
+import 'package:ecommercetutorial/features/home/widgets/top_categories.dart';
 import 'package:ecommercetutorial/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -91,7 +93,13 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Column(
-        children: [Text("Hello")],
+        children: const [
+          AddressBox(),
+          SizedBox(
+            height: 20,
+          ),
+          TopCategories()
+        ],
       ),
     );
   }
