@@ -1,5 +1,6 @@
 import 'package:ecommercetutorial/constants/global_variables.dart';
 import 'package:ecommercetutorial/features/home/widgets/address_box.dart';
+import 'package:ecommercetutorial/features/home/widgets/carousel_image.dart';
 import 'package:ecommercetutorial/features/home/widgets/top_categories.dart';
 import 'package:ecommercetutorial/providers/user_provider.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +99,11 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             height: 20,
           ),
-          TopCategories()
+          TopCategories(),
+          SizedBox(
+            height: 20,
+          ),
+          CarouselImage(),
         ],
       ),
     );
