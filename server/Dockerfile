@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Update npm
-# RUN npm install -g npm@8.13.1
+RUN npm install -g npm@8.14.0
 
 RUN npm i http 
 RUN npm i express 
