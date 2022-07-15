@@ -6,6 +6,7 @@ import 'package:ecommercetutorial/common/widgets/custom_button.dart';
 import 'package:ecommercetutorial/common/widgets/custom_textfield.dart';
 import 'package:ecommercetutorial/constants/global_variables.dart';
 import 'package:ecommercetutorial/constants/utils.dart';
+import 'package:ecommercetutorial/features/admin/services/admin_services.dart';
 import 'package:flutter/material.dart';
 
 class AddProductScreen extends StatefulWidget {
@@ -21,7 +22,12 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   final TextEditingController quantityController = TextEditingController();
+  final AdminServices adminServices = AdminServices();
+
   List<File> images = [];
+
+  final _addProductFormKey = GlobalKey<FormState>();
+
   @override
   void dispose() {
     super.dispose();
@@ -39,6 +45,20 @@ class _AddProductScreenState extends State<AddProductScreen> {
     "Books",
     "Fashion"
   ];
+
+  void sellProduct() {
+    if (_addProductFormKey.currentState!.validate() && images.isNotEmpty) {
+      adminServices.sellProduct(
+        context: context,
+        name: productNameController.text,
+        description: descriptionController.text,
+        price: double.parse(priceController.text),
+        quantity: double.parse(quantityController.text),
+        category: category,
+        images: images,
+      );
+    }
+  }
 
   void selectImages() async {
     var res = await pickImages();
@@ -68,6 +88,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _addProductFormKey,
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 10.0,
@@ -183,7 +204,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 ),
                 CustomButton(
                   text: "Sell",
-                  onTap: () {},
+                  onTap: sellProduct,
                 ),
               ],
             ),
